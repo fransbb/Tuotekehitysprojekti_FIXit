@@ -1,2 +1,4 @@
+# Kohdeyleisö
+
 Pääkohderyhmä: 18–50-vuotiaat kuluttajat, joiden puhelin tai läppäri on rikki ja jotka etsivät nopeaa ja luotettavaa korjauspalvelua.
 Toissijainen: Pienyritykset, jotka tarvitsevat laitehuoltoa työntekijöilleen.

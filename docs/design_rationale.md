@@ -1,5 +1,7 @@
+# Design Rationale
+
 • Päätös: Etusivulle tehtiin ikonipohjainen laitevalinta ruudukkomuodossa.
-Peruste: Käyttäjät tulevat sivulle yleensä tietyn laitteen ongelman kanssa, joten nopea visuaalinen valinta vähentää klikkauksia 
+Peruste: Käyttäjät tulevat sivulle yleensä tietyn laitteen ongelman kanssa, joten nopea visuaalinen valinta vähentää klikkauksia
 ja nopeuttaa huollon aloittamista.
 
 • Päätös: Käytimme selkeää korosteväriä toimintopainikkeissa ja valinnoissa.
