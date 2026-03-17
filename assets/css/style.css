@@ -1,0 +1,43 @@
+/* --- Navigaatio --- */
+
+.main-nav {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px 0;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    padding: 6px 4px;
+    transition: color 0.2s ease, border-bottom 0.2s ease;
+}
+
+/* Hover-efekti */
+.main-nav a:hover {
+    color: #0077cc;
+}
+
+/* Aktiivinen sivu */
+.main-nav a.active {
+    border-bottom: 2px solid #0077cc;
+    color: #0077cc;
+}
+
+/* Mobiilissa pienempi väli */
+@media (max-width: 600px) {
+    .main-nav ul {
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+}
