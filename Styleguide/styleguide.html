@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Laitevalinta</title>
+  <link rel="stylesheet" href="styleguide.css" />
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav__logo">
+  <img src="Logo1.png" alt="Yrityksen logo">
+</div>
+    <ul class="nav__links">
+      <li><a href="#">KOTI</a></li>
+      <li><a href="#">PALVELUT</a></li>
+      <li><a href="#">MITEN SE TOIMII</a></li>
+      <li><a href="#">HAKU</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero">
+    <div class="hero__content">
+      <h1>Valitse laite aloittaaksesi</h1>
+      <div class="selection-box" aria-label="Puhelimen valinta">
+        <label class="visually-hidden" for="brand">Merkki</label>
+        <select id="brand" class="select">
+          <option value="">Valitse merkki</option>
+          <option value="apple">Apple</option>
+          <option value="samsung">Samsung</option>
+          <option value="xiaomi">Xiaomi</option>
+          <option value="oneplus">OnePlus</option>
+        </select>
+
+        <label class="visually-hidden" for="model">Malli</label>
+        <select id="model" class="select" disabled>
+          <option value="">Valitse malli</option>
+        </select>
+      </div>
+      
+      <div class="devices" role="list">
+        <button class="device-box" role="listitem" aria-label="Puhelin">📱<span>Puhelin</span></button>
+        <button class="device-box" role="listitem" aria-label="Tabletti">📱<span>Tabletti</span></button>
+        <button class="device-box" role="listitem" aria-label="Tietokone">💻<span>Tietokone</span></button>
+        <button class="device-box" role="listitem" aria-label="Älykello">⌚<span>Älykello</span></button>
+        <button class="device-box" role="listitem" aria-label="Kuulokkeet">🎧<span>Kuulokkeet</span></button>
+        <button class="device-box" role="listitem" aria-label="Muu">…<span>Muu</span></button>
+      </div>
+    </div>
+  </header>
+
+  <section class="trustpilot" aria-labelledby="trustpilot-title">
+    <h2 id="trustpilot-title">⭐ TRUSTPILOT ⭐</h2>
+    <p class="trustpilot__rating">Erinomainen</p>
+    <div class="reviews">
+      <article class="review-box">
+        <h3>Lorem ipsum dolor</h3>
+        <p>Lyhyt kuvailu palvelusta ja kokemuksesta.</p>
+      </article>
+      <article class="review-box">
+        <h3>Lorem ipsum dolor</h3>
+        <p>Lyhyt kuvailu palvelusta ja kokemuksesta.</p>
+      </article>
+      <article class="review-box">
+        <h3>Lorem ipsum dolor</h3>
+        <p>Lyhyt kuvailu palvelusta ja kokemuksesta.</p>
+      </article>
+      <article class="review-box"></article>
+      <article class="review-box"></article>
+      <article class="review-box"></article>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2026 Yrityksen nimi</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
