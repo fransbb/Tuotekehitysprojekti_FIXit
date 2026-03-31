@@ -26,23 +26,33 @@ body {
     margin: 0;
     font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     color: var(--text);
-    background-color: var(--white);
     line-height: 1.6;
+
+    /* UUSI PREMIUM-TAUSTA */
+    background: linear-gradient(135deg, #cfc8ff 0%, #d4e4ff 100%);
+    background-attachment: fixed;
 }
 
+/* UUSI LASIMAINEN SISÄLTÖALUE */
 main {
-    padding: 30px 20px;
     max-width: 1100px;
-    margin: 0 auto;
+    margin: 40px auto;
+    padding: 40px 30px;
+
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
 }
 
 h1, h2, h3 {
-    color: var(--blue-800);
     margin-top: 0;
+    color: var(--blue-800);
 }
 
 /* ------------------------------
-   STICKY NAVIGAATIO (STYLEGUIDE)
+   NAVIGAATIO
 ------------------------------ */
 
 .main-nav {
@@ -82,20 +92,13 @@ h1, h2, h3 {
     color: var(--violet);
 }
 
-@media (max-width: 600px) {
-    .main-nav ul {
-        flex-wrap: wrap;
-        gap: 1rem;
-    }
-}
-
 /* ------------------------------
-   HERO-OSIO (STYLEGUIDE-HENKINEN)
+   HERO-OSIO
 ------------------------------ */
 
 .hero {
     text-align: center;
-    padding: 80px 20px;
+    padding: 70px 20px 80px 20px;
     background: linear-gradient(135deg, var(--violet-200), var(--blue));
     color: white;
     border-radius: var(--radius);
@@ -104,30 +107,124 @@ h1, h2, h3 {
 }
 
 .hero h1 {
-    color: white;
-    text-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    font-size: 80px;
+    font-weight: 800;
+    margin-top: -10px;
+    margin-bottom: 6px;
+    color: #ffffff;
+    text-shadow: 0 3px 10px rgba(0,0,0,0.35);
+    letter-spacing: -1px;
+}
+
+.hero h2 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #f3f0ff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    letter-spacing: 0.5px;
 }
 
 .hero p {
     max-width: 600px;
-    margin: 0 auto 20px auto;
+    margin: 0 auto 25px auto;
+    font-size: 18px;
+    opacity: 0.95;
 }
 
+/* PREMIUM CTA */
 .cta-button {
     display: inline-block;
-    background: var(--white);
-    color: var(--blue-800);
-    padding: 12px 24px;
-    border-radius: var(--radius);
+    background: rgba(255,255,255,0.15);
+    color: #ffffff;
+    padding: 14px 32px;
+    border-radius: 50px;
     font-weight: 700;
     text-decoration: none;
-    box-shadow: var(--shadow);
-    transition: 0.2s ease;
+    backdrop-filter: blur(6px);
+    border: 2px solid rgba(255,255,255,0.6);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    transition: 0.25s ease;
 }
 
 .cta-button:hover {
-    background: var(--violet);
-    color: white;
+    background: rgba(255,255,255,0.25);
+    border-color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+}
+
+/* ------------------------------
+   LAITEVALINTA
+------------------------------ */
+
+.device-title {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    color: var(--blue-800);
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.selection-box {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.select {
+    padding: 12px;
+    border-radius: var(--radius);
+    border: 1px solid var(--violet-200);
+    background: var(--white);
+    font-size: 16px;
+}
+
+/* ------------------------------
+   IKONIT / LAITEPAINIKKEET
+------------------------------ */
+
+.devices {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 24px;
+    margin-top: 20px;
+}
+
+.device-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 26px;
+    background: var(--card);
+    border: 2px solid var(--violet-200);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.device-box:hover {
+    transform: translateY(-4px);
+    border-color: var(--violet);
+    box-shadow: 0 12px 30px rgba(122, 76, 224, 0.18);
+}
+
+.device-box .icon {
+    font-size: 36px;
+    line-height: 1;
+    color: var(--blue-800);
+    font-weight: 600;
+}
+
+.device-box span {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--muted);
 }
 
 /* ------------------------------
@@ -141,6 +238,87 @@ h1, h2, h3 {
     border: 1px solid var(--border);
     box-shadow: var(--shadow);
     margin-bottom: 20px;
+}
+
+/* ------------------------------
+   YHTEYSTIEDOT – LOMAKE
+------------------------------ */
+
+.contact-form {
+    background: var(--card);
+    padding: 30px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+}
+
+.contact-form h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: var(--blue-800);
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: var(--blue-800);
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 20px;
+    border-radius: var(--radius);
+    border: 1px solid var(--violet-200);
+    background: var(--white);
+    font-size: 16px;
+    transition: 0.2s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--violet);
+    box-shadow: 0 0 0 3px rgba(122, 76, 224, 0.15);
+    outline: none;
+}
+
+.contact-form textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+.contact-form button {
+    display: inline-block;
+    background: rgba(122, 76, 224, 0.15);
+    color: var(--blue-800);
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-weight: 700;
+    border: 2px solid rgba(122, 76, 224, 0.4);
+    backdrop-filter: blur(6px);
+    cursor: pointer;
+    transition: 0.25s ease;
+    width: 100%;
+    text-align: center;
+}
+
+.contact-form button:hover {
+    background: rgba(122, 76, 224, 0.25);
+    border-color: var(--violet);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+}
+
+@media (max-width: 600px) {
+    .contact-form {
+        padding: 20px;
+    }
 }
 
 /* ------------------------------
@@ -166,83 +344,6 @@ h1, h2, h3 {
 }
 
 /* ------------------------------
-   UKK-SIVU
------------------------------- */
-
-.faq-section h2 {
-    margin-top: 30px;
-    color: var(--violet);
-}
-
-.faq-section p {
-    margin-bottom: 20px;
-}
-
-/* ------------------------------
-   PALVELUT-SIVU
------------------------------- */
-
-.page-header {
-    margin-bottom: 30px;
-}
-
-.service-section {
-    margin-bottom: 40px;
-    background: var(--card);
-    padding: 20px;
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow);
-}
-
-/* ------------------------------
-   YHTEYSTIEDOT-SIVU
------------------------------- */
-
-.contact-info {
-    margin-bottom: 30px;
-}
-
-.contact-form {
-    background: var(--card);
-    padding: 20px;
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow);
-}
-
-.contact-form label {
-    display: block;
-    margin-bottom: 6px;
-    font-weight: 600;
-}
-
-.contact-form input,
-.contact-form textarea {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border-radius: var(--radius);
-    border: 1px solid var(--violet-200);
-    background: var(--white);
-}
-
-.contact-form button {
-    background: var(--violet);
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: var(--radius);
-    cursor: pointer;
-    font-weight: 700;
-    box-shadow: var(--shadow);
-}
-
-.contact-form button:hover {
-    background: var(--blue-800);
-}
-
-/* ------------------------------
    FOOTER
 ------------------------------ */
 
@@ -256,57 +357,110 @@ footer {
 }
 
 /* ------------------------------
-   STYLEGUIDE-IKONIT
+   SIVUN REUNAMAINOKSET – NÄYTTÄVÄT
 ------------------------------ */
 
-.device-box .icon {
-    font-size: 32px;
-    line-height: 1;
+.side-ads {
+    position: fixed;
+    top: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 999;
+}
+
+.left-ads { left: 20px; }
+.right-ads { right: 20px; }
+
+.ad-box {
+    width: 200px;
+    padding: 16px 20px;
+    border-radius: 16px;
+    font-weight: 700;
+    text-align: center;
+    transition: 0.3s ease;
+    cursor: pointer;
+    line-height: 1.3;
+}
+
+.ad-box span {
     display: block;
-    margin-bottom: 6px;
-    color: var(--blue-800);
+    margin-top: 6px;
+    font-size: 13px;
+    font-weight: 500;
 }
 
 /* ------------------------------
-   MODERNIT STYLEGUIDE-IKONIT
+   1) GRADIENT-PREMIUM
 ------------------------------ */
 
-.devices {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 24px; /* Suurempi väli ikonien välille */
-    margin-top: 20px;
+.gradient-ad {
+    background: linear-gradient(135deg, var(--violet), var(--blue));
+    color: white;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
 }
 
-.device-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    padding: 26px;
-    background: var(--card);
-    border: 2px solid var(--violet-200);
-    border-radius: 18px; /* Pyöristetympi, moderni */
-    box-shadow: var(--shadow);
-    cursor: pointer;
-    transition: 0.25s ease;
+.gradient-ad:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 14px 35px rgba(0,0,0,0.35);
 }
 
-.device-box:hover {
-    transform: translateY(-4px);
-    border-color: var(--violet);
-    box-shadow: 0 12px 30px rgba(122, 76, 224, 0.18);
-}
+/* ------------------------------
+   2) GLASSMORPHISM
+------------------------------ */
 
-.device-box .icon {
-    font-size: 36px; /* Moderni koko */
-    line-height: 1;
+.glass-ad {
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.5);
     color: var(--blue-800);
-    font-weight: 600; /* Tekee symboleista modernimman näköisiä */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
-.device-box span {
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--muted);
+.glass-ad:hover {
+    transform: translateY(-4px);
+    background: rgba(255,255,255,0.35);
 }
+
+/* ------------------------------
+   3) NEON-OUTLINE
+------------------------------ */
+
+.neon-ad {
+    background: rgba(20,20,30,0.85);
+    color: #fff;
+    border: 2px solid #7A4CE0;
+    box-shadow: 0 0 12px rgba(122,76,224,0.6);
+}
+
+.neon-ad:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 20px rgba(122,76,224,0.9), 0 0 40px rgba(122,76,224,0.6);
+}
+
+/* Piilotetaan mobiilissa */
+@media (max-width: 900px) {
+    .side-ads { display: none; }
+}
+
+/* ------------------------------
+   MAINOSTEN ANIMAATIO
+------------------------------ */
+
+@keyframes floatAd {
+    0%   { transform: translateY(0) rotate(0deg); }
+    50%  { transform: translateY(-6px) rotate(1deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+}
+
+.ad-box {
+    animation: floatAd 4s ease-in-out infinite;
+}
+
+.left-ads .ad-box:nth-child(1) { animation-delay: 0s; }
+.left-ads .ad-box:nth-child(2) { animation-delay: 0.5s; }
+.left-ads .ad-box:nth-child(3) { animation-delay: 1s; }
+
+.right-ads .ad-box:nth-child(1) { animation-delay: 0.3s; }
+.right-ads .ad-box:nth-child(2) { animation-delay: 0.8s; }
+.right-ads .ad-box:nth-child(3) { animation-delay: 1.3s; }
