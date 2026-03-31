@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FixIT Mobile</title>
-</head>
 
-<link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
 
 <body>
 
@@ -22,53 +22,86 @@
         </nav>
     </header>
 
-
-    </header>
-
     <!-- Sivun pääsisältö -->
     <main>
-    <!-- Tänne tulee sivukohtainen sisältö -->
-         
+
+        <!-- STYLEGUIDE-HERO: dropdownit + ikonit -->
         <section class="hero">
-    <h1>Nopea ja luotettava puhelinhuolto Oulussa</h1>
-    <p>FixIT Mobile korjaa puhelimesi, tablettisi ja läppärisi nopeasti ja ammattitaidolla. Saat selkeän hinta-arvion ja nopean palvelun ilman turhaa odottelua.</p>
-    <a href="yhteystiedot.html" class="cta-button">Varaa aika huoltoon</a>
-</section>
+            <div class="hero-content">
 
-<section class="services-overview">
-    <h2>Suosituimmat palvelut</h2>
+                <h1>Valitse laite aloittaaksesi</h1>
 
-    <div class="service-box">
-        <h3>Näytön vaihto</h3>
-        <p>Rikkoutunut näyttö vaihdetaan laadukkaisiin osiin nopeasti ja turvallisesti.</p>
-    </div>
+                <div class="selection-box">
+                    <select class="select">
+                        <option value="">Valitse merkki</option>
+                        <option value="apple">Apple</option>
+                        <option value="samsung">Samsung</option>
+                        <option value="xiaomi">Xiaomi</option>
+                        <option value="oneplus">OnePlus</option>
+                    </select>
 
-    <div class="service-box">
-        <h3>Akun vaihto</h3>
-        <p>Uusi akku palauttaa laitteen käyttöiän ja suorituskyvyn. Korjaus onnistuu usein saman päivän aikana.</p>
-    </div>
+                    <select class="select" disabled>
+                        <option value="">Valitse malli</option>
+                    </select>
+                </div>
 
-    <div class="service-box">
-        <h3>Vianmääritys</h3>
-        <p>Jos et tiedä mikä laitteessa on vikana, teemme nopean ja tarkan diagnoosin ennen korjausta.</p>
-    </div>
-</section>
+                <div class="devices">
+    <button class="device-box"><span class="icon">🖳</span><span>Puhelin</span></button>
+    <button class="device-box"><span class="icon">▭</span><span>Tabletti</span></button>
+    <button class="device-box"><span class="icon">🖥️</span><span>Tietokone</span></button>
+    <button class="device-box"><span class="icon">⌚</span><span>Älykello</span></button>
+    <button class="device-box"><span class="icon">🎧</span><span>Kuulokkeet</span></button>
+    <button class="device-box"><span class="icon">⋯</span><span>Muu</span></button>
+</div>
 
-<section class="why-us">
-    <h2>Miksi valita FixIT Mobile?</h2>
-    <ul>
-        <li>Nopea palvelu – useimmat korjaukset saman päivän aikana</li>
-        <li>Selkeät hinnat – ei piilokuluja</li>
-        <li>Laadukkaat osat – vain testattuja ja kestäviä komponentteja</li>
-        <li>Paikallinen yritys – Oululainen, helposti tavoitettava huoltopiste</li>
-    </ul>
-</section>
+            </div>
+        </section>
 
-<section class="cta-final">
-    <h2>Tarvitsetko nopean korjauksen?</h2>
-    <p>Varaa aika tai tule suoraan liikkeeseen – autamme heti.</p>
-    <a href="yhteystiedot.html" class="cta-button">Varaa aika</a>
-</section>
+        <!-- Kurssin hero-teksti -->
+        <section class="hero-text">
+            <h1>Nopea ja luotettava puhelinhuolto Vaasassa</h1>
+            <p>FixIT Mobile korjaa puhelimesi, tablettisi ja läppärisi nopeasti ja ammattitaidolla. Saat selkeän hinta-arvion ja nopean palvelun ilman turhaa odottelua.</p>
+            <a href="yhteystiedot.html" class="cta-button">Varaa aika huoltoon</a>
+        </section>
+
+        <!-- Suosituimmat palvelut -->
+        <section class="services-overview">
+            <h2>Suosituimmat palvelut</h2>
+
+            <div class="service-box">
+                <h3>Näytön vaihto</h3>
+                <p>Rikkoutunut näyttö vaihdetaan laadukkaisiin osiin nopeasti ja turvallisesti.</p>
+            </div>
+
+            <div class="service-box">
+                <h3>Akun vaihto</h3>
+                <p>Uusi akku palauttaa laitteen käyttöiän ja suorituskyvyn. Korjaus onnistuu usein saman päivän aikana.</p>
+            </div>
+
+            <div class="service-box">
+                <h3>Vianmääritys</h3>
+                <p>Jos et tiedä mikä laitteessa on vikana, teemme nopean ja tarkan diagnoosin ennen korjausta.</p>
+            </div>
+        </section>
+
+        <!-- Miksi valita meidät -->
+        <section class="why-us">
+            <h2>Miksi valita FixIT Mobile?</h2>
+            <ul>
+                <li>Nopea palvelu – useimmat korjaukset saman päivän aikana</li>
+                <li>Selkeät hinnat – ei piilokuluja</li>
+                <li>Laadukkaat osat – vain testattuja ja kestäviä komponentteja</li>
+                <li>Paikallinen yritys – Vaasalainen, helposti tavoitettava huoltopiste</li>
+            </ul>
+        </section>
+
+        <!-- CTA-loppu -->
+        <section class="cta-final">
+            <h2>Tarvitsetko nopean korjauksen?</h2>
+            <p>Varaa aika tai tule suoraan liikkeeseen – autamme heti.</p>
+            <a href="yhteystiedot.html" class="cta-button">Varaa aika</a>
+        </section>
+
     </main>
 
     <!-- Alatunniste -->
