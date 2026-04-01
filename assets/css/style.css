@@ -24,7 +24,7 @@
 
 header {
     position: relative;
-    height: 140px; /* tilaa isolle logolle */
+    height: 140px;
 }
 
 .logo {
@@ -35,7 +35,7 @@ header {
 }
 
 .logo img {
-    height: 200px; /* iso desktop-logo */
+    height: 250px;
     width: auto;
 }
 
