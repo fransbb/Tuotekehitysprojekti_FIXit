@@ -16,7 +16,7 @@
   <!-- NAV -->
   <nav class="nav">
     <div class="nav__logo">
-      <img src="Logo1.png" alt="iFIXIT logo">
+      <img src="KUVAT/logo1.png" alt="iFIXIT logo">
     </div>
     <ul class="nav__links">
       <li><a href="#osta">OSTA</a></li>
@@ -26,7 +26,7 @@
     </ul>
   </nav>
 
-  <!-- HERO: kolme korttia -->
+  <!-- HERO -->
   <section class="hero">
     <p class="hero__label">Mitä haluaisit tehdä?</p>
     <h1>Valitse <em>palvelu</em></h1>
@@ -278,10 +278,11 @@
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer class="footer" id="yhteystiedot">
     <div class="footer__inner">
       <div class="footer__brand">
-        <img src="Logo1.png" alt="iFIXIT logo" class="footer__logo">
+        <img src="KUVAT/logo1.png" alt="iFIXIT logo" class="footer__logo">
         <p class="footer__tagline">Osta, Myy, Korjaa – Vaasassa.</p>
       </div>
 
@@ -290,7 +291,7 @@
         <ul class="footer__list">
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Hovioikeudenpuistikko 12, 65100 Vaasa
+            Hovioikeudenpistikko 12, 65100 Vaasa
           </li>
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
@@ -298,7 +299,7 @@
           </li>
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <a href="mailto:info@ifixit.fi">info@ifixit.fi</a>
+            <a href="mailto:inhvo@ifixit.fi">inhvo@ifixit.fi</a>
           </li>
         </ul>
       </div>
@@ -331,7 +332,6 @@
   </footer>
 
   <script>
-    // ── DEVICE DATA ──
     const deviceData = {
       puhelin:    { bg: 'KUVAT/luuri.png',      brands: { 'Apple': ['iPhone 16','iPhone 15','iPhone 14','iPhone SE'], 'Samsung': ['Galaxy S24','Galaxy S23','Galaxy A55','Galaxy Z Flip 5'], 'Xiaomi': ['Xiaomi 14','Redmi Note 13','POCO X6'], 'OnePlus': ['OnePlus 12','OnePlus Nord 4','OnePlus 11'], 'Google': ['Pixel 9','Pixel 8a','Pixel 8'] } },
       tabletti:   { bg: 'KUVAT/tabletti.png',   brands: { 'Apple': ['iPad Pro 13"','iPad Air M2','iPad Mini 7','iPad 10. gen'], 'Samsung': ['Galaxy Tab S9','Galaxy Tab S8','Galaxy Tab A9'], 'Lenovo': ['Tab P12','Tab M10 Plus'], 'Microsoft': ['Surface Pro 11','Surface Go 4'] } },
@@ -341,7 +341,6 @@
       muu:        { bg: 'KUVAT/muu.png',        brands: { 'Apple': ['Apple TV 4K','HomePod mini','AirTag'], 'Samsung': ['Smart TV Neo QLED','Frame TV'], 'Meta': ['Quest 3','Quest 3S','Ray-Ban Meta'], 'Muu merkki': ['Muu laite'] } }
     };
 
-    // ── BACKGROUND CROSSFADE ──
     const bgLayer = document.getElementById('bgLayer');
     const bgNext  = document.getElementById('bgLayerNext');
     let currentBg = '';
@@ -357,7 +356,6 @@
       }, 700);
     }
 
-    // ── OSTA DROPDOWNS ──
     const brandSel = document.getElementById('brand');
     const modelSel = document.getElementById('model');
     const contBtn  = document.getElementById('continueBtn');
@@ -409,7 +407,6 @@
     populateBrands('puhelin');
     setBackground(deviceData['puhelin'].bg);
 
-    // ── FORM SUBMITS ──
     document.getElementById('myyForm').addEventListener('submit', e => {
       e.preventDefault();
       document.getElementById('myySuccess').style.display = 'block';
@@ -422,7 +419,6 @@
       e.target.reset();
     });
 
-    // ── SMOOTH SCROLL ──
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', e => {
         const target = document.querySelector(a.getAttribute('href'));
@@ -432,6 +428,3 @@
   </script>
 </body>
 </html>
-
-KORJAA IFIXIT LOGO
-"MUU" KOHTAAN VOISI KIRJOITTAA ITSE LAITTEEN MERKIN JA MALLIN
