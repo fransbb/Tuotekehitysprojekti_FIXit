@@ -23,7 +23,6 @@ body {
   background: var(--bg);
 }
 
-/* ── BACKGROUND LAYERS ── */
 .bg-layer {
   position: fixed;
   inset: 0;
@@ -48,7 +47,6 @@ body::after {
 
 .nav, header, section, footer { position: relative; z-index: 2; }
 
-/* ── NAV ── */
 .nav {
   display: flex;
   justify-content: space-between;
@@ -67,7 +65,6 @@ body::after {
 .nav__links a { text-decoration: none; color: var(--text-muted); font-weight: 600; font-size: 12px; letter-spacing: 0.08em; transition: color 0.15s; }
 .nav__links a:hover { color: var(--text); }
 
-/* ── HERO ── */
 .hero {
   padding: clamp(60px, 10vw, 120px) clamp(16px, 4vw, 60px) clamp(60px, 8vw, 100px);
   text-align: center;
@@ -78,7 +75,6 @@ body::after {
 .hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(32px, 6vw, 56px); font-weight: 800; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 3rem; color: #f0f0f8; }
 .hero h1 em { font-style: normal; color: var(--violet-light); }
 
-/* ── SERVICE CARDS ── */
 .service-cards {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -109,7 +105,6 @@ body::after {
 .service-card p { font-size: 14px; color: var(--text-muted); line-height: 1.65; flex: 1; text-align: left; }
 .service-card__cta { font-size: 13px; font-weight: 500; color: var(--violet-light); margin-top: 4px; }
 
-/* ── SECTIONS ── */
 .section {
   padding: 5rem clamp(16px, 4vw, 60px);
 }
@@ -136,7 +131,6 @@ body::after {
 .section__header h2 em { font-style: normal; color: var(--violet-light); }
 .section__sub { font-size: 15px; color: var(--text-muted); line-height: 1.7; max-width: 560px; }
 
-/* ── DEVICE BUTTONS ── */
 .devices-label { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.75rem; }
 .devices {
   display: grid;
@@ -162,7 +156,6 @@ body::after {
 .device-box.active { border: 1.5px solid var(--violet); background: rgba(30, 26, 46, 0.9); }
 .device-box.active span { color: var(--violet-light); }
 
-/* ── FORM ELEMENTS ── */
 .selection-box { display: flex; gap: 12px; flex-wrap: wrap; }
 .form { display: flex; flex-direction: column; gap: 16px; }
 .form__row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
@@ -189,7 +182,6 @@ body::after {
 .select:disabled { opacity: 0.4; cursor: not-allowed; }
 .input::placeholder { color: var(--text-muted); opacity: 0.7; }
 
-/* ── BUTTONS ── */
 .action-btn {
   padding: 0.7rem 1.75rem;
   background: var(--violet);
@@ -210,7 +202,6 @@ body::after {
 
 .form__note { font-size: 14px; color: #6dcf9e; margin-top: 8px; font-weight: 500; }
 
-/* ── PROMO ── */
 .promo {
   background: rgba(21, 15, 42, 0.92);
   backdrop-filter: blur(12px);
@@ -227,7 +218,6 @@ body::after {
 .feat-title { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; color: #f0f0f8; margin-bottom: 4px; }
 .feat-body { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
 
-/* ── FOOTER ── */
 .footer {
   background: rgba(10, 10, 16, 0.98);
   border-top: 1px solid var(--border);
@@ -296,7 +286,6 @@ body::after {
   .footer__inner { grid-template-columns: 1fr; gap: 2rem; }
 }
 
-/* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .service-cards { grid-template-columns: 1fr; }
   .promo__features { grid-template-columns: 1fr; }
