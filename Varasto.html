@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Varasto - iFixit Vaasa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="KUVAT/FAVICON_IO/favicon.ico">
+  <link rel="stylesheet" href="varasto.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <a class="nav__back" href="ifixit.html">
+      <svg viewBox="0 0 24 24"><path d="M19 12H5M5 12l7 7M5 12l7-7"/></svg>
+      Takaisin
+    </a>
+    <div class="nav__logo">
+      <img src="kuvat/Logo1.png" alt="iFIXIT logo">
+    </div>
+    <div class="nav__spacer"></div>
+  </nav>
+
+  <div class="page-header">
+    <div class="breadcrumb" id="breadcrumb"></div>
+    <h1 class="page-title" id="pageTitle">Varasto</h1>
+    <p class="page-sub">Kaikki laitteet on tarkastettu ja kunnostettu. 12 kuukauden takuu jokaiseen laitteeseen.</p>
+  </div>
+
+  <div class="filters" id="filtersRow">
+    <span class="filter-label">Kunto:</span>
+    <button class="filter-btn active" data-filter="kaikki">Kaikki</button>
+    <button class="filter-btn" data-filter="Erinomainen">Erinomainen</button>
+    <button class="filter-btn" data-filter="Hyvä">Hyvä</button>
+    <button class="filter-btn" data-filter="Tyydyttävä">Tyydyttävä</button>
+  </div>
+
+  <div class="inventory">
+    <p class="inventory__count" id="countLabel"></p>
+    <div class="cards-grid" id="cardsGrid"></div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-bg" id="modalBg">
+    <div class="modal" id="modal">
+      <button class="modal__close" id="modalClose"></button>
+      <div class="modal__tag" id="mTag"></div>
+      <div class="modal__name" id="mName"></div>
+      <div class="modal__price" id="mPrice"></div>
+      <div class="modal__specs" id="mSpecs"></div>
+      <button class="modal__cta" id="mCta">Ota yhteyttä ja varaa →</button>
+      <p class="modal__note">Soita <a href="tel:+358451234567" style="color:var(--violet-light)">+358 45 123 4567</a> tai lähetä sähköpostia <a href="mailto:info@ifixit.fi" style="color:var(--violet-light)">info@ifixit.fi</a></p>
+    </div>
+  </div>
+
+  <script>
+    // Varaston laitteet ja tiedot
+    const inventory = {
+      puhelin: [
+        { id:1, brand:'Apple', model:'iPhone 16', condition:'Erinomainen', storage:'128 GB', color:'Musta', battery:'96 %', price:749, origPrice:1099, icon:'📱', specs:'128 GB tallennustila · Musta · Akku 96 %' },
+        { id:2, brand:'Apple', model:'iPhone 15', condition:'Erinomainen', storage:'256 GB', color:'Sininen', battery:'98 %', price:599, origPrice:929, icon:'📱', specs:'256 GB · Sininen · Akku 98 % · Face ID' },
+        { id:3, brand:'Apple', model:'iPhone 14', condition:'Hyvä', storage:'128 GB', color:'Violetti', battery:'89 %', price:399, origPrice:729, icon:'📱', specs:'128 GB · Violetti · Akku 89 % · pieniä naarmuja' },
+        { id:4, brand:'Apple', model:'iPhone SE', condition:'Tyydyttävä', storage:'64 GB', color:'Valkoinen', battery:'81 %', price:199, origPrice:479, icon:'📱', specs:'64 GB · Valkoinen · Akku 81 % · näkyviä naarmuja' },
+        { id:5, brand:'Samsung', model:'Galaxy S24', condition:'Erinomainen', storage:'256 GB', color:'Harmaa', battery:'97 %', price:689, origPrice:1099, icon:'📱', specs:'256 GB · Phantom Gray · Akku 97 %' },
+        { id:6, brand:'Samsung', model:'Galaxy S23', condition:'Hyvä', storage:'128 GB', color:'Vihreä', battery:'91 %', price:449, origPrice:749, icon:'📱', specs:'128 GB · Botanic Green · Akku 91 %' },
+        { id:7, brand:'Samsung', model:'Galaxy A55', condition:'Erinomainen', storage:'128 GB', color:'Musta', battery:'99 %', price:289, origPrice:449, icon:'📱', specs:'128 GB · Awesome Navy · Akku 99 %' },
+        { id:8, brand:'Google', model:'Pixel 9', condition:'Erinomainen', storage:'128 GB', color:'Hazel', battery:'99 %', price:599, origPrice:899, icon:'📱', specs:'128 GB · Hazel · Akku 99 % · 7 vuotta päivityksiä' },
+        { id:9, brand:'Google', model:'Pixel 8a', condition:'Hyvä', storage:'128 GB', color:'Sininen', battery:'94 %', price:379, origPrice:599, icon:'📱', specs:'128 GB · Bay Blue · Akku 94 %' },
+        { id:10, brand:'Xiaomi', model:'Xiaomi 14', condition:'Erinomainen', storage:'256 GB', color:'Musta', battery:'98 %', price:499, origPrice:799, icon:'📱', specs:'256 GB · Black · Akku 98 % · Leica-kamera' },
+        { id:11, brand:'OnePlus', model:'OnePlus 12', condition:'Hyvä', storage:'256 GB', color:'Vihreä', battery:'92 %', price:519, origPrice:849, icon:'📱', specs:'256 GB · Flowy Emerald · Akku 92 %' },
+        { id:12, brand:'Samsung', model:'Galaxy Z Flip 5', condition:'Hyvä', storage:'256 GB', color:'Mint', battery:'88 %', price:559, origPrice:1099, icon:'📱', specs:'256 GB · Mint · Taittuvanäyttö · Akku 88 %' },
+      ],
+      tabletti: [
+        { id:20, brand:'Apple', model:'iPad Pro 13"', condition:'Erinomainen', storage:'256 GB', color:'Space Gray', battery:'97 %', price:899, origPrice:1479, icon:'🗒️', specs:'256 GB · Space Gray · M4-siru · Akku 97 %' },
+        { id:21, brand:'Apple', model:'iPad Air M2', condition:'Hyvä', storage:'128 GB', color:'Starlight', battery:'93 %', price:549, origPrice:899, icon:'🗒️', specs:'128 GB · Starlight · M2-siru · Akku 93 %' },
+        { id:22, brand:'Apple', model:'iPad Mini 7', condition:'Erinomainen', storage:'64 GB', color:'Purple', battery:'99 %', price:479, origPrice:699, icon:'🗒️', specs:'64 GB · Purple · Akku 99 %' },
+        { id:23, brand:'Samsung', model:'Galaxy Tab S9', condition:'Erinomainen', storage:'256 GB', color:'Graphite', battery:'96 %', price:649, origPrice:1099, icon:'🗒️', specs:'256 GB · Graphite · AMOLED · Akku 96 %' },
+        { id:24, brand:'Samsung', model:'Galaxy Tab S8', condition:'Hyvä', storage:'128 GB', color:'Silver', battery:'90 %', price:399, origPrice:749, icon:'🗒️', specs:'128 GB · Silver · Akku 90 %' },
+        { id:25, brand:'Microsoft', model:'Surface Pro 11', condition:'Erinomainen', storage:'256 GB', color:'Platinum', battery:'98 %', price:999, origPrice:1499, icon:'🗒️', specs:'256 GB · Platinum · Snapdragon X Plus · Akku 98 %' },
+        { id:26, brand:'Lenovo', model:'Tab P12', condition:'Hyvä', storage:'128 GB', color:'Storm Grey', battery:'91 %', price:299, origPrice:499, icon:'🗒️', specs:'128 GB · Storm Grey · Akku 91 %' },
+      ],
+      tietokone: [
+        { id:40, brand:'Apple', model:'MacBook Pro 16"', condition:'Erinomainen', storage:'512 GB', color:'Space Black', battery:'98 %', price:1699, origPrice:2799, icon:'💻', specs:'M4 Pro · 24 GB RAM · 512 GB SSD · Akku 98 %' },
+        { id:41, brand:'Apple', model:'MacBook Pro 14"', condition:'Hyvä', storage:'512 GB', color:'Space Gray', battery:'92 %', price:1299, origPrice:2199, icon:'💻', specs:'M3 Pro · 18 GB RAM · 512 GB SSD · Akku 92 %' },
+        { id:42, brand:'Apple', model:'MacBook Air M3', condition:'Erinomainen', storage:'256 GB', color:'Midnight', battery:'99 %', price:999, origPrice:1499, icon:'💻', specs:'M3 · 16 GB RAM · 256 GB SSD · Akku 99 %' },
+        { id:43, brand:'Dell', model:'XPS 15', condition:'Hyvä', storage:'512 GB', color:'Platinum', battery:'88 %', price:899, origPrice:1599, icon:'💻', specs:'Intel Core Ultra 7 · 16 GB RAM · 512 GB SSD · Win11' },
+        { id:44, brand:'Lenovo', model:'ThinkPad X1 Carbon', condition:'Erinomainen', storage:'512 GB', color:'Black', battery:'96 %', price:849, origPrice:1699, icon:'💻', specs:'Intel Core i7 · 16 GB RAM · 512 GB SSD · LTE' },
+        { id:45, brand:'HP', model:'Spectre x360', condition:'Hyvä', storage:'512 GB', color:'Nightfall Black', battery:'90 %', price:799, origPrice:1499, icon:'💻', specs:'Intel Core Ultra 5 · 16 GB RAM · 512 GB SSD · 2-in-1' },
+        { id:46, brand:'Asus', model:'ZenBook 14', condition:'Erinomainen', storage:'512 GB', color:'Ponder Blue', battery:'97 %', price:649, origPrice:1099, icon:'💻', specs:'AMD Ryzen 7 · 16 GB RAM · 512 GB SSD · OLED' },
+        { id:47, brand:'Dell', model:'XPS 13', condition:'Tyydyttävä', storage:'256 GB', color:'Graphite', battery:'82 %', price:499, origPrice:1099, icon:'💻', specs:'Intel Core i5 · 8 GB RAM · 256 GB SSD · pieniä naarmuja' },
+      ],
+      alykello: [
+        { id:60, brand:'Apple', model:'Apple Watch Series 10', condition:'Erinomainen', storage:'32 GB', color:'Musta', battery:'98 %', price:349, origPrice:499, icon:'⌚', specs:'45 mm · Alumiini · GPS + Cellular · Akku 98 %' },
+        { id:61, brand:'Apple', model:'Apple Watch SE 2', condition:'Hyvä', storage:'32 GB', color:'Silver', battery:'91 %', price:199, origPrice:299, icon:'⌚', specs:'40 mm · Alumiini · GPS · Akku 91 %' },
+        { id:62, brand:'Samsung', model:'Galaxy Watch 7', condition:'Erinomainen', storage:'16 GB', color:'Green', battery:'97 %', price:229, origPrice:399, icon:'⌚', specs:'44 mm · GPS + LTE · Akku 97 %' },
+        { id:63, brand:'Garmin', model:'Fenix 7X', condition:'Hyvä', storage:'32 GB', color:'Carbon Gray', battery:'89 %', price:449, origPrice:799, icon:'⌚', specs:'51 mm · Sapphiiri · Solar · GPS · Akku 89 %' },
+        { id:64, brand:'Fitbit', model:'Sense 2', condition:'Hyvä', storage:'–', color:'Shadow Gray', battery:'87 %', price:129, origPrice:249, icon:'⌚', specs:'EKG · Stressimittaus · Akku 87 %' },
+      ],
+      kuulokkeet: [
+        { id:80, brand:'Apple', model:'AirPods Pro 2', condition:'Erinomainen', storage:'–', color:'Valkoinen', battery:'98 %', price:199, origPrice:309, icon:'🎧', specs:'ANC · USB-C · H2-siru · Akku 98 %' },
+        { id:81, brand:'Apple', model:'AirPods 4', condition:'Hyvä', storage:'–', color:'Valkoinen', battery:'92 %', price:129, origPrice:179, icon:'🎧', specs:'ANC · USB-C · H2-siru · Akku 92 %' },
+        { id:82, brand:'Sony', model:'WH-1000XM5', condition:'Erinomainen', storage:'–', color:'Musta', battery:'99 %', price:249, origPrice:399, icon:'🎧', specs:'Industry-leading ANC · 30 h akku · Multipoint' },
+        { id:83, brand:'Bose', model:'QuietComfort 45', condition:'Hyvä', storage:'–', color:'Valkoinen', battery:'90 %', price:199, origPrice:329, icon:'🎧', specs:'ANC · 24 h akku · Pehmeä nahkatyyny' },
+        { id:84, brand:'Samsung', model:'Galaxy Buds3 Pro', condition:'Erinomainen', storage:'–', color:'Silver', battery:'97 %', price:149, origPrice:249, icon:'🎧', specs:'ANC · Hi-Fi ääni · Galaxy AI · Akku 97 %' },
+        { id:85, brand:'Jabra', model:'Elite 10', condition:'Hyvä', storage:'–', color:'Titanium Black', battery:'88 %', price:169, origPrice:299, icon:'🎧', specs:'Dolby Atmos · MultiSensor ANC · 27 h akku' },
+      ],
+      muu: [
+        { id:100, brand:'Apple', model:'Apple TV 4K', condition:'Erinomainen', storage:'64 GB', color:'Musta', battery:'–', price:129, origPrice:179, icon:'📦', specs:'Wi-Fi 6E · Dolby Vision · tvOS 17' },
+        { id:101, brand:'Meta', model:'Quest 3', condition:'Hyvä', storage:'128 GB', color:'Valkoinen', battery:'–', price:379, origPrice:599, icon:'📦', specs:'Mixed Reality · Snapdragon XR2 Gen 2 · 128 GB' },
+        { id:102, brand:'Meta', model:'Quest 3S', condition:'Erinomainen', storage:'128 GB', color:'Valkoinen', battery:'–', price:299, origPrice:399, icon:'📦', specs:'Mixed Reality · Snapdragon XR2 Gen 2 · 128 GB' },
+      ]
+    };
+
+    const conditionClass = { 'Erinomainen': 'erinomainen', 'Hyvä': 'hyva', 'Tyydyttävä': 'tyydyttava' };
+
+    // Luetaan URL-parametrit (laite, merkki, malli)
+    const params = new URLSearchParams(window.location.search);
+    const device = params.get('device') || '';
+    const brand  = params.get('brand')  || '';
+    const model  = params.get('model')  || '';
+
+    const deviceLabels = { puhelin:'Puhelin', tabletti:'Tabletti', tietokone:'Tietokone', alykello:'Älykello', kuulokkeet:'Kuulokkeet', muu:'Muu' };
+    const deviceIcons  = { puhelin:'📱', tabletti:'🗒️', tietokone:'💻', alykello:'⌚', kuulokkeet:'🎧', muu:'📦' };
+
+    // Navigointipolku ja sivun otsikko
+    const bc = document.getElementById('breadcrumb');
+    let titleText = 'Kaikki laitteet';
+    if (device) {
+      bc.innerHTML = `<a href="ifixit.html" style="color:var(--text-muted);text-decoration:none">Etusivu</a> <span class="sep">›</span> <span>${deviceLabels[device]||device}</span>`;
+      titleText = deviceLabels[device] || device;
+      if (brand) {
+        bc.innerHTML += ` <span class="sep">›</span> <span>${brand}</span>`;
+        titleText = brand;
+        if (model) {
+          bc.innerHTML += ` <span class="sep">›</span> <span>${model}</span>`;
+          titleText = model;
+        }
+      }
+    }
+    document.getElementById('pageTitle').innerHTML = `<em>${titleText}</em> – varasto`;
+    document.title = `${titleText} – iFixit Vaasa`;
+
+    //Kunto-suodatin
+    let activeFilter = 'kaikki';
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeFilter = btn.dataset.filter;
+        renderCards();
+      });
+    });
+
+    // Korttien piirtäminen ruudulle
+    function getItems() {
+      let items = inventory[device] || Object.values(inventory).flat();
+      if (brand) items = items.filter(i => i.brand === brand);
+      if (model) items = items.filter(i => i.model === model);
+      if (activeFilter !== 'kaikki') items = items.filter(i => i.condition === activeFilter);
+      return items;
+    }
+
+    function renderCards() {
+      const grid = document.getElementById('cardsGrid');
+      const items = getItems();
+      document.getElementById('countLabel').textContent = `${items.length} laitetta saatavilla`;
+
+      if (items.length === 0) {
+        grid.innerHTML = `
+          <div class="empty" style="grid-column:1/-1">
+            <div class="empty__icon">📭</div>
+            <h3>Ei laitteita</h3>
+            <p>Haulla ei löytynyt laitteita. Kokeile eri suodattimia tai <a href="ifixit.html#myy">jätä myynti-ilmoitus</a> niin otamme yhteyttä kun sopiva laite löytyy.</p>
+            <a href="ifixit.html" style="display:inline-block;margin-top:1rem;padding:10px 24px;background:var(--violet);color:#fff;border-radius:8px;font-weight:500;font-size:14px;text-decoration:none">← Takaisin etusivulle</a>
+          </div>`;
+        return;
+      }
+
+      grid.innerHTML = items.map(item => `
+        <div class="product-card" data-id="${item.id}">
+          <div class="product-card__img">
+            ${item.icon}
+            <div class="product-card__badge badge--${conditionClass[item.condition]}">${item.condition}</div>
+          </div>
+          <div class="product-card__body">
+            <div class="product-card__brand">${item.brand}</div>
+            <div class="product-card__name">${item.model}</div>
+            <div class="product-card__specs">${item.specs}</div>
+          </div>
+          <div class="product-card__footer">
+            <div class="product-card__price">
+              ${item.price} €
+              <small>${item.origPrice} € uutena</small>
+            </div>
+            <button class="buy-btn" onclick="openModal(${item.id})">Varaa</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Tuotekortin popup-ikkuna
+    const allItems = Object.values(inventory).flat();
+    function openModal(id) {
+      const item = allItems.find(i => i.id === id);
+      if (!item) return;
+      document.getElementById('mTag').textContent = item.condition;
+      document.getElementById('mTag').className = `modal__tag badge--${conditionClass[item.condition]}`;
+      document.getElementById('mName').textContent = `${item.brand} ${item.model}`;
+      document.getElementById('mPrice').textContent = `${item.price} €`;
+      document.getElementById('mSpecs').innerHTML = `
+        <strong>Kunto:</strong> ${item.condition}<br>
+        <strong>Tallennustila:</strong> ${item.storage}<br>
+        <strong>Väri:</strong> ${item.color}<br>
+        <strong>Akku:</strong> ${item.battery}<br>
+        <strong>Alkuperäinen hinta:</strong> ${item.origPrice} €<br>
+        <strong>Säästö:</strong> ${item.origPrice - item.price} € (${Math.round((1 - item.price/item.origPrice)*100)} %)<br>
+        <br>Sisältää 12 kuukauden takuun. Toimitetaan 1–3 arkipäivässä.
+      `;
+      document.getElementById('modalBg').classList.add('open');
+    }
+
+    document.getElementById('modalClose').addEventListener('click', () => document.getElementById('modalBg').classList.remove('open'));
+    document.getElementById('modalBg').addEventListener('click', e => { if (e.target === e.currentTarget) e.currentTarget.classList.remove('open'); });
+    document.getElementById('mCta').addEventListener('click', () => {
+      window.location.href = 'ifixit.html#myy';
+    });
+
+    renderCards();
+  </script>
+</body>
+</html>
