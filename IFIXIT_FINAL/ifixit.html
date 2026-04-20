@@ -3,16 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Luotettava laitehuolto- osto ja myyntipaikka</title>
-  <link rel="stylesheet" href="ifixit.css" />
+  <title>Luotettava laitehuolto - osto ja myyntipaikka</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="ifixit.css" />
 </head>
 <body>
 
   <div class="bg-layer" id="bgLayer"></div>
   <div class="bg-layer" id="bgLayerNext"></div>
 
+  <!-- NAV -->
   <nav class="nav">
     <div class="nav__logo">
       <img src="kuvat/Logo1.png" alt="iFIXIT logo">
@@ -23,7 +24,18 @@
       <li><a href="#korjaa">KORJAA</a></li>
       <li><a href="#yhteystiedot">YHTEYSTIEDOT</a></li>
     </ul>
+    <button class="nav__hamburger" id="hamburger" aria-label="Avaa valikko">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+
+  <!-- Mobile menu -->
+  <div class="nav__mobile" id="mobileMenu">
+    <a href="#osta" class="mobile-link">OSTA</a>
+    <a href="#myy" class="mobile-link">MYY</a>
+    <a href="#korjaa" class="mobile-link">KORJAA</a>
+    <a href="#yhteystiedot" class="mobile-link">YHTEYSTIEDOT</a>
+  </div>
 
   <section class="hero">
     <p class="hero__label">Mitä haluaisit tehdä?</p>
@@ -83,8 +95,13 @@
         </div>
         <div class="sel-wrap sel-wrap--btn">
           <span class="sel-label" style="visibility:hidden">ok</span>
-          <button class="action-btn" id="continueBtn" disabled>Jatka →</button>
+          <button class="action-btn" id="continueBtn" disabled>Selaa varastoa →</button>
         </div>
+      </div>
+
+      <!-- Katso koko varasto -nappi -->
+      <div class="full-inventory-wrap">
+        <a href="varasto.html" class="full-inventory-btn">📦 Katso koko varasto →</a>
       </div>
     </div>
   </section>
@@ -103,12 +120,8 @@
             <label class="sel-label" for="myy-laite">Laitetyyppi</label>
             <select class="select" id="myy-laite">
               <option value="">Valitse laite</option>
-              <option>Puhelin</option>
-              <option>Tabletti</option>
-              <option>Tietokone</option>
-              <option>Älykello</option>
-              <option>Kuulokkeet</option>
-              <option>Muu</option>
+              <option>Puhelin</option><option>Tabletti</option><option>Tietokone</option>
+              <option>Älykello</option><option>Kuulokkeet</option><option>Muu</option>
             </select>
           </div>
           <div class="form__group">
@@ -116,16 +129,15 @@
             <input class="input" id="myy-merkki" type="text" placeholder="esim. iPhone 14 Pro" />
           </div>
         </div>
-
         <div class="form__row">
           <div class="form__group">
             <label class="sel-label" for="myy-kunto">Kunto</label>
             <select class="select" id="myy-kunto">
               <option value="">Valitse kunto</option>
-              <option>Erinomainen – ei naarmuja</option>
-              <option>Hyvä – pieniä kulumajälkiä</option>
-              <option>Tyydyttävä – näkyviä naarmuja</option>
-              <option>Heikko – rikkoutunut/ei toimi kunnolla</option>
+              <option>Erinomainen - ei naarmuja</option>
+              <option>Hyvä - pieniä kulumajälkiä</option>
+              <option>Tyydyttävä - näkyviä naarmuja</option>
+              <option>Heikko - rikkoutunut/ei toimi kunnolla</option>
             </select>
           </div>
           <div class="form__group">
@@ -133,7 +145,6 @@
             <input class="input" id="myy-lisatieto" type="text" placeholder="esim. alkuperäinen laturi mukana" />
           </div>
         </div>
-
         <div class="form__row">
           <div class="form__group">
             <label class="sel-label" for="myy-nimi">Nimi</label>
@@ -148,7 +159,6 @@
             <input class="input" id="myy-puh" type="tel" placeholder="+358 40 123 4567" />
           </div>
         </div>
-
         <button type="submit" class="action-btn action-btn--full">Lähetä tarjouspyyntö →</button>
         <p class="form__note" id="myySuccess" style="display:none">✓ Tarjouspyyntö lähetetty! Otamme yhteyttä pian!</p>
       </form>
@@ -169,12 +179,8 @@
             <label class="sel-label" for="korjaa-laite">Laitetyyppi</label>
             <select class="select" id="korjaa-laite">
               <option value="">Valitse laite</option>
-              <option>Puhelin</option>
-              <option>Tabletti</option>
-              <option>Tietokone</option>
-              <option>Älykello</option>
-              <option>Kuulokkeet</option>
-              <option>Muu</option>
+              <option>Puhelin</option><option>Tabletti</option><option>Tietokone</option>
+              <option>Älykello</option><option>Kuulokkeet</option><option>Muu</option>
             </select>
           </div>
           <div class="form__group">
@@ -182,21 +188,14 @@
             <input class="input" id="korjaa-merkki" type="text" placeholder="esim. Samsung Galaxy S23" />
           </div>
         </div>
-
         <div class="form__row">
           <div class="form__group">
             <label class="sel-label" for="korjaa-vika">Mikä on vikana?</label>
             <select class="select" id="korjaa-vika">
               <option value="">Valitse vika</option>
-              <option>Särkynyt näyttö</option>
-              <option>Akku ei kestä</option>
-              <option>Ei käynnisty</option>
-              <option>Kamera ei toimi</option>
-              <option>Latauspiste rikki</option>
-              <option>Vesivaurio</option>
-              <option>Näppäimistö/kosketuslevy rikki</option>
-              <option>Ääni ei toimi</option>
-              <option>Muu ongelma</option>
+              <option>Särkynyt näyttö</option><option>Akku ei kestä</option><option>Ei käynnisty</option>
+              <option>Kamera ei toimi</option><option>Latauspiste rikki</option><option>Vesivaurio</option>
+              <option>Näppäimistö/kosketuslevy rikki</option><option>Ääni ei toimi</option><option>Muu ongelma</option>
             </select>
           </div>
           <div class="form__group">
@@ -204,7 +203,6 @@
             <input class="input" id="korjaa-kuvaus" type="text" placeholder="esim. näyttö murtui kulmasta" />
           </div>
         </div>
-
         <div class="form__row">
           <div class="form__group">
             <label class="sel-label" for="korjaa-nimi">Nimi</label>
@@ -219,7 +217,6 @@
             <input class="input" id="korjaa-puh" type="tel" placeholder="+358 40 123 4567" />
           </div>
         </div>
-
         <button type="submit" class="action-btn action-btn--full">Lähetä korjauspyyntö →</button>
         <p class="form__note" id="korjaaSuccess" style="display:none">✓ Korjauspyyntö lähetetty! Otamme yhteyttä pian.</p>
       </form>
@@ -230,104 +227,151 @@
     <div class="promo__inner">
       <h2 id="promo-title" class="promo__heading">Miksi valita meidät?</h2>
       <p class="promo__sub">Yli 10 000 tyytyväistä asiakasta. Nopea palvelu, reilu hinta, luotettava takuu.</p>
-
       <div class="promo__features">
         <div class="feature">
-          <div class="feat-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          </div>
-          <div>
-            <p class="feat-title">12kk takuu</p>
-            <p class="feat-body">Jokaiseen ostettuun laitteeseen 12 kuukauden toimintatakuu. Ei piilotettuja vikoja.</p>
-          </div>
+          <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+          <div><p class="feat-title">12kk takuu</p><p class="feat-body">Jokaiseen ostettuun laitteeseen 12 kuukauden toimintatakuu. Ei piilotettuja vikoja.</p></div>
         </div>
         <div class="feature">
-          <div class="feat-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-          </div>
-          <div>
-            <p class="feat-title">Nopea toimitus</p>
-            <p class="feat-body">Saat laitteesi 1–3 päivässä kotiovelle tai lähimpään noutopisteeseen.</p>
-          </div>
+          <div class="feat-icon"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+          <div><p class="feat-title">Nopea toimitus</p><p class="feat-body">Saat laitteesi 1-3 päivässä kotiovelle tai lähimpään noutopisteeseen.</p></div>
         </div>
         <div class="feature">
-          <div class="feat-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"/></svg>
-          </div>
-          <div>
-            <p class="feat-title">14 päivän palautusoikeus</p>
-            <p class="feat-body">Et ole tyytyväinen? Palauta laite 14 päivän sisällä, ei kysymyksiä.</p>
-          </div>
+          <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"/></svg></div>
+          <div><p class="feat-title">14 päivän palautusoikeus</p><p class="feat-body">Et ole tyytyväinen? Palauta laite 14 päivän sisällä, ei kysymyksiä.</p></div>
         </div>
         <div class="feature">
-          <div class="feat-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
-          </div>
-          <div>
-            <p class="feat-title">Ilmainen korjausdiagnoosi</p>
-            <p class="feat-body">Selvitämme vian ilmaiseksi. Kiinteä hinta ennen korjausta, ei yllätyksiä.</p>
-          </div>
+          <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
+          <div><p class="feat-title">Ilmainen korjausdiagnoosi</p><p class="feat-body">Selvitämme vian ilmaiseksi. Kiinteä hinta ennen korjausta, ei yllätyksiä.</p></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- ASIAKASARVIOT -->
+  <section class="reviews">
+    <div class="reviews__inner">
+      <div class="reviews__header">
+        <span class="section__tag">Asiakasarviot</span>
+        <h2 class="reviews__title">Mitä <em>asiakkaamme</em> sanovat</h2>
+        <div class="reviews__stars-total">
+          ★★★★★ <span>4.9/5</span> · <span class="reviews__count">yli 300 arvostelua</span>
+        </div>
+      </div>
+      <div class="reviews__grid">
+
+        <div class="review-card">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__text">"Ostin iPhone 14:n ja olin todella yllättynyt – laite näytti ja toimi kuin uusi. Toimituskin oli seuraavana päivänä. Suosittelen kaikille!"</p>
+          <div class="review-card__author">
+            <div class="review-card__avatar">MK</div>
+            <div>
+              <p class="review-card__name">Mikko K.</p>
+              <p class="review-card__meta">Oulu · iPhone 14</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__text">"Myin vanhan MacBookini ja sain erittäin hyvän hinnan. Prosessi oli nopea ja maksu tuli heti. Ehdottomasti paras paikka myydä käytetty laite."</p>
+          <div class="review-card__author">
+            <div class="review-card__avatar">SL</div>
+            <div>
+              <p class="review-card__name">Sara L.</p>
+              <p class="review-card__meta">Helsinki · MacBook Pro</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__text">"Näyttöni hajosi aamulla ja sain sen korjattua saman päivän aikana. Hinta oli reilu ja diagnoosi täysin ilmainen. Ei muuta paikkaa jatkossakaan."</p>
+          <div class="review-card__author">
+            <div class="review-card__avatar">JP</div>
+            <div>
+              <p class="review-card__name">Juhani P.</p>
+              <p class="review-card__meta">Vaasa · Samsung Galaxy S23</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__text">"Tilasin AirPods Pro 2:n ja ne olivat täydellisessä kunnossa. 12kk takuu antoi mielenrauhan. Hinta oli puolet uuden hinnasta – ei voi pyytää enempää."</p>
+          <div class="review-card__author">
+            <div class="review-card__avatar">ER</div>
+            <div>
+              <p class="review-card__name">Elina R.</p>
+              <p class="review-card__meta">Tampere · AirPods Pro 2</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-card__stars">★★★★☆</div>
+          <p class="review-card__text">"Akkuvaihtoa varten kävin paikan päällä. Palvelu oli asiallista ja nopeaa. Ainoa miinus oli pieni odotusaika, mutta lopputulos oli täydellinen."</p>
+          <div class="review-card__author">
+            <div class="review-card__avatar">TH</div>
+            <div>
+              <p class="review-card__name">Tomi H.</p>
+              <p class="review-card__meta">Vaasa · iPhone SE</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__text">"Vesivaurioitunut puhelin palautettiin henkiin! En uskonut sen enää toimivan, mutta iFixit teki ihmeen. Hinnoittelu oli läpinäkyvää alusta alkaen."</p>
+          <div class="review-card__author">
+            <div class="review-card__avatar">AM</div>
+            <div>
+              <p class="review-card__name">Anna M.</p>
+              <p class="review-card__meta">Seinäjoki · OnePlus 11</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <footer class="footer" id="yhteystiedot">
     <div class="footer__inner">
       <div class="footer__brand">
         <img src="kuvat/Logo1.png" alt="iFIXIT logo" class="footer__logo">
-        <p class="footer__tagline">Osta, Myy, Korjaa – Vaasassa.</p>
+        <p class="footer__tagline">Osta, Myy, Korjaa - Vaasassa.</p>
       </div>
-
       <div class="footer__col">
         <p class="footer__heading">Yhteystiedot</p>
         <ul class="footer__list">
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Hovioikeudenpistikko 12, 65100 Vaasa
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
-            <a href="tel:+358451234567">+358 45 123 4567</a>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <a href="mailto:inhvo@ifixit.fi">inhvo@ifixit.fi</a>
-          </li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Hovioikeudenpistikko 12, 65100 Vaasa</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg><a href="tel:+358451234567">+358 45 123 4567</a></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:info@ifixit.fi">info@ifixit.fi</a></li>
         </ul>
       </div>
-
       <div class="footer__col">
         <p class="footer__heading">Seuraa meitä</p>
         <ul class="footer__list">
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-            <a href="https://instagram.com/iFixitVaasa" target="_blank">@iFixitVaasa</a>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
-            <a href="https://facebook.com/ifixitvaasa" target="_blank">iFixit Vaasa</a>
-          </li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg><a href="https://instagram.com/iFixitVaasa" target="_blank">@iFixitVaasa</a></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg><a href="https://facebook.com/ifixitvaasa" target="_blank">iFixit Vaasa</a></li>
         </ul>
-
         <p class="footer__heading" style="margin-top: 1.5rem;">Aukioloajat</p>
         <ul class="footer__list">
-          <li>Ma–Pe &nbsp; 10:00–18:00</li>
-          <li>La &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10:00–15:00</li>
+          <li>Ma-Pe &nbsp; 10:00-18:00</li>
+          <li>La &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10:00-15:00</li>
           <li>Su &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Suljettu</li>
         </ul>
       </div>
     </div>
-
     <div class="footer__bottom">
-      <p>© 2026 iFixit Vaasa – Kaikki oikeudet pidätetään</p>
+      <p>© 2026 iFixit Vaasa - Kaikki oikeudet pidätetään</p>
     </div>
   </footer>
 
   <script>
     const deviceData = {
-      puhelin:    { bg: 'KUVAT/luuri.png',      brands: { 'Apple': ['iPhone 16','iPhone 15','iPhone 14','iPhone SE'], 'Samsung': ['Galaxy S24','Galaxy S23','Galaxy A55','Galaxy Z Flip 5'], 'Xiaomi': ['Xiaomi 14','Redmi Note 13','POCO X6'], 'OnePlus': ['OnePlus 12','OnePlus Nord 4','OnePlus 11'], 'Google': ['Pixel 9','Pixel 8a','Pixel 8'] } },
+      puhelin:    { bg: 'KUVAT/luurinkorjaus.png',      brands: { 'Apple': ['iPhone 16','iPhone 15','iPhone 14','iPhone SE'], 'Samsung': ['Galaxy S24','Galaxy S23','Galaxy A55','Galaxy Z Flip 5'], 'Xiaomi': ['Xiaomi 14','Redmi Note 13','POCO X6'], 'OnePlus': ['OnePlus 12','OnePlus Nord 4','OnePlus 11'], 'Google': ['Pixel 9','Pixel 8a','Pixel 8'] } },
       tabletti:   { bg: 'KUVAT/tabletti.png',   brands: { 'Apple': ['iPad Pro 13"','iPad Air M2','iPad Mini 7','iPad 10. gen'], 'Samsung': ['Galaxy Tab S9','Galaxy Tab S8','Galaxy Tab A9'], 'Lenovo': ['Tab P12','Tab M10 Plus'], 'Microsoft': ['Surface Pro 11','Surface Go 4'] } },
       tietokone:  { bg: 'KUVAT/tietokone.png',  brands: { 'Apple': ['MacBook Pro 16"','MacBook Pro 14"','MacBook Air M3'], 'Dell': ['XPS 15','XPS 13','Inspiron 15'], 'Lenovo': ['ThinkPad X1 Carbon','ThinkPad T14','IdeaPad 5'], 'HP': ['Spectre x360','EliteBook 840'], 'Asus': ['ZenBook 14','ROG Zephyrus G14'] } },
       alykello:   { bg: 'KUVAT/alykello.png',   brands: { 'Apple': ['Apple Watch Series 10','Apple Watch SE 2','Apple Watch Ultra 2'], 'Samsung': ['Galaxy Watch 7','Galaxy Watch 6'], 'Garmin': ['Fenix 7X','Forerunner 965','Venu 3'], 'Fitbit': ['Sense 2','Versa 4','Charge 6'] } },
@@ -401,31 +445,55 @@
     populateBrands('puhelin');
     setBackground(deviceData['puhelin'].bg);
 
+    contBtn.addEventListener('click', () => {
+      if (contBtn.disabled) return;
+      const brand = brandSel.value;
+      const model = modelSel.value;
+      const params = new URLSearchParams({ device: activeDevice, brand, model });
+      window.location.href = `varasto.html?${params}`;
+    });
+
     document.getElementById('myyForm').addEventListener('submit', e => {
       e.preventDefault();
       document.getElementById('myySuccess').style.display = 'block';
       e.target.reset();
     });
-
     document.getElementById('korjaaForm').addEventListener('submit', e => {
       e.preventDefault();
       document.getElementById('korjaaSuccess').style.display = 'block';
       e.target.reset();
     });
 
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
+    document.querySelectorAll('a[href^="#"], .mobile-link').forEach(a => {
       a.addEventListener('click', e => {
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+        const href = a.getAttribute('href');
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          mobileMenu.classList.remove('open');
+          hamburger.classList.remove('open');
+          const navH = 100;
+          const top = target.getBoundingClientRect().top + window.scrollY - navH - 20;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
       });
+    });
+
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+      hamburger.setAttribute('aria-label', open ? 'Sulje valikko' : 'Avaa valikko');
+    });
+
+    document.addEventListener('click', e => {
+      if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('open');
+      }
     });
   </script>
 </body>
 </html>
-
-"MUU" KOHTAAN VOISI KIRJOITTAA ITSE LAITTEEN MERKIN JA MALLIN
-KUN PAINAA OSTA MYY KORJAA NIIN SCROLLAUS MENEE HIEMAN LIIKAA ALAS KORJAA
-LISÄÄ INHIMILLISYYTTÄ: IHMISLÄHEISTÄ KONTENTTIA ESIM. KUVIA IHMISISTÄ, ASIAKASKOKEMUKSIA
-YLÄPALKKI HÄVIÄÄ SCROLLATTAESSA N. PUOLIVÄLISSÄ... MOBIILISSA EI NÄY VALIKKOA OLLENKAAN
-TEE MUUTAMILLE LAITTEILLE SIVU JOKA NÄYTTÄÄ VARASTON MITÄ ON
-MUU NAPPI VOISI HÄVITTÄÄ DROPDOWNIT JA KIRJOITTAA ITSE LAITTEEN MERKIN JA MALLIN
