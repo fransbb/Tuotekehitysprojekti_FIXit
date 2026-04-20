@@ -6,7 +6,7 @@
   <title>Varasto - iFixit Vaasa</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="KUVAT/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="KUVAT/FAVICON_IO/favicon.ico">
   <link rel="stylesheet" href="varasto.css" />
 </head>
 <body>
@@ -55,7 +55,7 @@
   </div>
 
   <script>
-    // Varaston laitteet ja tiedot 
+    // Varaston laitteet ja tiedot
     const inventory = {
       puhelin: [
         { id:1, brand:'Apple', model:'iPhone 16', condition:'Erinomainen', storage:'128 GB', color:'Musta', battery:'96 %', price:749, origPrice:1099, icon:'📱', specs:'128 GB tallennustila · Musta · Akku 96 %' },
@@ -114,7 +114,7 @@
 
     const conditionClass = { 'Erinomainen': 'erinomainen', 'Hyvä': 'hyva', 'Tyydyttävä': 'tyydyttava' };
 
-    // Luetaan URL-parametrit (laite, merkki, malli) 
+    // Luetaan URL-parametrit (laite, merkki, malli)
     const params = new URLSearchParams(window.location.search);
     const device = params.get('device') || '';
     const brand  = params.get('brand')  || '';
@@ -123,7 +123,7 @@
     const deviceLabels = { puhelin:'Puhelin', tabletti:'Tabletti', tietokone:'Tietokone', alykello:'Älykello', kuulokkeet:'Kuulokkeet', muu:'Muu' };
     const deviceIcons  = { puhelin:'📱', tabletti:'🗒️', tietokone:'💻', alykello:'⌚', kuulokkeet:'🎧', muu:'📦' };
 
-    // Navigointipolku ja sivun otsikko 
+    // Navigointipolku ja sivun otsikko
     const bc = document.getElementById('breadcrumb');
     let titleText = 'Kaikki laitteet';
     if (device) {
@@ -141,7 +141,7 @@
     document.getElementById('pageTitle').innerHTML = `<em>${titleText}</em> – varasto`;
     document.title = `${titleText} – iFixit Vaasa`;
 
-    //Kunto-suodatin 
+    //Kunto-suodatin
     let activeFilter = 'kaikki';
     document.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -152,7 +152,7 @@
       });
     });
 
-    // Korttien piirtäminen ruudulle 
+    // Korttien piirtäminen ruudulle
     function getItems() {
       let items = inventory[device] || Object.values(inventory).flat();
       if (brand) items = items.filter(i => i.brand === brand);
@@ -199,7 +199,7 @@
       `).join('');
     }
 
-    // Tuotekortin popup-ikkuna 
+    // Tuotekortin popup-ikkuna
     const allItems = Object.values(inventory).flat();
     function openModal(id) {
       const item = allItems.find(i => i.id === id);
