@@ -17,7 +17,7 @@
       min-height: 100vh;
     }
 
-    /* ── NAV ── */
+    /* NAVIGAATIOPALKKI */
     .nav {
       display: flex;
       align-items: center;
@@ -50,10 +50,10 @@
       display: flex;
       justify-content: center;
     }
-    .nav__logo img { height: 48px; width: auto; filter: brightness(0) invert(1); }
-    .nav__spacer { width: 80px; } /* balance the back button */
+    .nav__logo img { height: 100px; width: auto; filter: brightness(0) invert(1); }
+    .nav__spacer { width: 80px; } /* tasapainottaa takaisin-nappia */
 
-    /* ── PAGE HEADER ── */
+    /* SIVUN OTSIKKOALUE */
     .page-header {
       padding: 3rem clamp(16px, 4vw, 60px) 2rem;
       max-width: 1100px;
@@ -81,7 +81,7 @@
     .page-title em { font-style: normal; color: var(--violet-light); }
     .page-sub { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
 
-    /* ── FILTERS ── */
+    /* KUNTO-SUODATTIMET */
     .filters {
       padding: 0 clamp(16px, 4vw, 60px) 2rem;
       max-width: 1100px;
@@ -107,7 +107,7 @@
     .filter-btn:hover { border-color: var(--violet); color: var(--text); }
     .filter-btn.active { border-color: var(--violet); background: rgba(122,76,224,0.15); color: var(--violet-light); }
 
-    /* ── GRID ── */
+    /* TUOTEKORTTIEN RUUDUKKO */
     .inventory {
       padding: 0 clamp(16px, 4vw, 60px) 5rem;
       max-width: 1100px;
@@ -125,7 +125,7 @@
       gap: 20px;
     }
 
-    /* ── PRODUCT CARD ── */
+    /* YKSITTÄINEN TUOTEKORTTI */
     .product-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -186,7 +186,7 @@
     }
     .buy-btn:hover { background: var(--violet-dark); }
 
-    /* ── EMPTY STATE ── */
+    /* TYHJÄ TILA (ei hakutuloksia) */
     .empty {
       text-align: center;
       padding: 5rem 1rem;
@@ -198,7 +198,7 @@
     .empty a { color: var(--violet-light); text-decoration: none; font-weight: 500; }
     .empty a:hover { text-decoration: underline; }
 
-    /* ── MODAL ── */
+    /* POPUP-IKKUNA (tuotteen tiedot) */
     .modal-bg {
       display: none;
       position: fixed;

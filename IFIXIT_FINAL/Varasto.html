@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Varasto – iFixit Vaasa</title>
+  <title>Varasto - iFixit Vaasa</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="varasto.css" />
@@ -43,7 +43,7 @@
   <!-- Modal -->
   <div class="modal-bg" id="modalBg">
     <div class="modal" id="modal">
-      <button class="modal__close" id="modalClose">×</button>
+      <button class="modal__close" id="modalClose"></button>
       <div class="modal__tag" id="mTag"></div>
       <div class="modal__name" id="mName"></div>
       <div class="modal__price" id="mPrice"></div>
@@ -54,7 +54,7 @@
   </div>
 
   <script>
-    // ── Mock inventory database ──
+    // Varaston laitteet ja tiedot 
     const inventory = {
       puhelin: [
         { id:1, brand:'Apple', model:'iPhone 16', condition:'Erinomainen', storage:'128 GB', color:'Musta', battery:'96 %', price:749, origPrice:1099, icon:'📱', specs:'128 GB tallennustila · Musta · Akku 96 %' },
@@ -113,7 +113,7 @@
 
     const conditionClass = { 'Erinomainen': 'erinomainen', 'Hyvä': 'hyva', 'Tyydyttävä': 'tyydyttava' };
 
-    // ── Read URL params ──
+    // Luetaan URL-parametrit (laite, merkki, malli) 
     const params = new URLSearchParams(window.location.search);
     const device = params.get('device') || '';
     const brand  = params.get('brand')  || '';
@@ -122,25 +122,25 @@
     const deviceLabels = { puhelin:'Puhelin', tabletti:'Tabletti', tietokone:'Tietokone', alykello:'Älykello', kuulokkeet:'Kuulokkeet', muu:'Muu' };
     const deviceIcons  = { puhelin:'📱', tabletti:'🗒️', tietokone:'💻', alykello:'⌚', kuulokkeet:'🎧', muu:'📦' };
 
-    // ── Breadcrumb & title ──
+    // Navigointipolku ja sivun otsikko 
     const bc = document.getElementById('breadcrumb');
     let titleText = 'Kaikki laitteet';
     if (device) {
       bc.innerHTML = `<a href="ifixit.html" style="color:var(--text-muted);text-decoration:none">Etusivu</a> <span class="sep">›</span> <span>${deviceLabels[device]||device}</span>`;
       titleText = deviceLabels[device] || device;
       if (brand) {
-        bc.innerHTML += ` <span class="sep"></span> <span>${brand}</span>`;
+        bc.innerHTML += ` <span class="sep">›</span> <span>${brand}</span>`;
         titleText = brand;
         if (model) {
-          bc.innerHTML += ` <span class="sep"></span> <span>${model}</span>`;
+          bc.innerHTML += ` <span class="sep">›</span> <span>${model}</span>`;
           titleText = model;
         }
       }
     }
-    document.getElementById('pageTitle').innerHTML = `<em>${titleText}</em> - varasto`;
-    document.title = `${titleText} - iFixit Vaasa`;
+    document.getElementById('pageTitle').innerHTML = `<em>${titleText}</em> – varasto`;
+    document.title = `${titleText} – iFixit Vaasa`;
 
-    // ── Filter state ──
+    //Kunto-suodatin 
     let activeFilter = 'kaikki';
     document.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -151,7 +151,7 @@
       });
     });
 
-    // ── Render ──
+    // Korttien piirtäminen ruudulle 
     function getItems() {
       let items = inventory[device] || Object.values(inventory).flat();
       if (brand) items = items.filter(i => i.brand === brand);
@@ -198,7 +198,7 @@
       `).join('');
     }
 
-    // ── Modal ──
+    // Tuotekortin popup-ikkuna 
     const allItems = Object.values(inventory).flat();
     function openModal(id) {
       const item = allItems.find(i => i.id === id);
