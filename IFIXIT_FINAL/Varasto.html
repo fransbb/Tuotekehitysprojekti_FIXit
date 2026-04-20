@@ -12,7 +12,7 @@
 <body>
 
   <nav class="nav">
-    <a class="nav__back" href="ifixit.html">
+    <a class="nav__back" href="index.html">
       <svg viewBox="0 0 24 24"><path d="M19 12H5M5 12l7 7M5 12l7-7"/></svg>
       Takaisin
     </a>
@@ -127,7 +127,7 @@
     const bc = document.getElementById('breadcrumb');
     let titleText = 'Kaikki laitteet';
     if (device) {
-      bc.innerHTML = `<a href="ifixit.html" style="color:var(--text-muted);text-decoration:none">Etusivu</a> <span class="sep">›</span> <span>${deviceLabels[device]||device}</span>`;
+      bc.innerHTML = `<a href="index.html" style="color:var(--text-muted);text-decoration:none">Etusivu</a> <span class="sep">›</span> <span>${deviceLabels[device]||device}</span>`;
       titleText = deviceLabels[device] || device;
       if (brand) {
         bc.innerHTML += ` <span class="sep">›</span> <span>${brand}</span>`;
@@ -171,8 +171,8 @@
           <div class="empty" style="grid-column:1/-1">
             <div class="empty__icon">📭</div>
             <h3>Ei laitteita</h3>
-            <p>Haulla ei löytynyt laitteita. Kokeile eri suodattimia tai <a href="ifixit.html#myy">jätä myynti-ilmoitus</a> niin otamme yhteyttä kun sopiva laite löytyy.</p>
-            <a href="ifixit.html" style="display:inline-block;margin-top:1rem;padding:10px 24px;background:var(--violet);color:#fff;border-radius:8px;font-weight:500;font-size:14px;text-decoration:none">← Takaisin etusivulle</a>
+            <p>Haulla ei löytynyt laitteita. Kokeile eri suodattimia tai <a href="index.html#myy">jätä myynti-ilmoitus</a> niin otamme yhteyttä kun sopiva laite löytyy.</p>
+            <a href="index.html" style="display:inline-block;margin-top:1rem;padding:10px 24px;background:var(--violet);color:#fff;border-radius:8px;font-weight:500;font-size:14px;text-decoration:none">← Takaisin etusivulle</a>
           </div>`;
         return;
       }
@@ -223,7 +223,7 @@
     document.getElementById('modalClose').addEventListener('click', () => document.getElementById('modalBg').classList.remove('open'));
     document.getElementById('modalBg').addEventListener('click', e => { if (e.target === e.currentTarget) e.currentTarget.classList.remove('open'); });
     document.getElementById('mCta').addEventListener('click', () => {
-      window.location.href = 'ifixit.html#myy';
+      window.location.href = 'index.html#myy';
     });
 
     renderCards();
