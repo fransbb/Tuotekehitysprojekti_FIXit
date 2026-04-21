@@ -51,9 +51,6 @@
 </head>
 <body>
 
-  <div class="bg-layer" id="bgLayer"></div>
-  <div class="bg-layer" id="bgLayerNext"></div>
-
   <!-- NAVIGAATIOPALKKI -->
   <nav class="nav">
     <div class="nav__logo">
@@ -420,21 +417,6 @@
       muu:        { bg: 'kuvat/muu.png',        brands: { 'Apple': ['Apple TV 4K','HomePod mini','AirTag'], 'Samsung': ['Smart TV Neo QLED','Frame TV'], 'Meta': ['Quest 3','Quest 3S','Ray-Ban Meta'], 'Muu merkki': ['Muu laite'] } }
     };
 
-    const bgLayer = document.getElementById('bgLayer');
-    const bgNext  = document.getElementById('bgLayerNext');
-    let currentBg = '';
-
-    function setBackground(url) {
-      if (url === currentBg) return;
-      currentBg = url;
-      bgNext.style.backgroundImage = url ? `url('${url}')` : '';
-      bgNext.style.opacity = url ? '1' : '0';
-      setTimeout(() => {
-        bgLayer.style.backgroundImage = url ? `url('${url}')` : '';
-        bgNext.style.opacity = '0';
-      }, 700);
-    }
-
     const brandSel = document.getElementById('brand');
     const modelSel = document.getElementById('model');
     const contBtn  = document.getElementById('continueBtn');
@@ -476,7 +458,6 @@
         document.querySelectorAll('.device-box').forEach(x => x.classList.remove('active'));
         b.classList.add('active');
         activeDevice = b.dataset.device;
-        setBackground(deviceData[activeDevice]?.bg || '');
         populateBrands(activeDevice);
       });
     });
@@ -484,7 +465,6 @@
     brandSel.addEventListener('change', () => populateModels(activeDevice, brandSel.value));
     modelSel.addEventListener('change', updateBtn);
     populateBrands('puhelin');
-    setBackground(deviceData['puhelin'].bg);
 
     contBtn.addEventListener('click', () => {
       if (contBtn.disabled) return;

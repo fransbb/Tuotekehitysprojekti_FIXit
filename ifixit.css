@@ -21,6 +21,10 @@
       font-family: 'DM Sans', system-ui, sans-serif;
       color: var(--text);
       background: var(--bg);
+      background-image: url('kuvat/liiketilat.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
     }
 
     .bg-layer {
@@ -379,10 +383,20 @@
 
     /* ASIAKASARVIOT-OSIO */
     .reviews {
-      padding: 5rem clamp(16px, 4vw, 60px);
-      background: rgba(15, 12, 26, 0.6);
-      backdrop-filter: blur(8px);
-      border-top: 1px solid var(--border);
+    padding: 5rem clamp(16px, 4vw, 60px);
+
+    background-image:
+    linear-gradient(
+      rgba(15, 12, 26, 0.555),
+      rgba(15, 12, 26, 0)
+    ),
+    url("kuvat/tyoukot.png");
+
+    background-position: center;
+    background-size: cover;
+
+    backdrop-filter: blur(8px);
+    border-top: 1px solid var(--border);
     }
     .reviews__inner { max-width: 1060px; margin: 0 auto; }
     .reviews__header { text-align: center; margin-bottom: 3rem; }

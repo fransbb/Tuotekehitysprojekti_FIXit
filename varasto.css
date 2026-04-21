@@ -15,6 +15,10 @@
       color: var(--text);
       background: var(--bg);
       min-height: 100vh;
+      background-image: url('kuvat/varasto.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
     }
 
     /* NAVIGAATIOPALKKI */
